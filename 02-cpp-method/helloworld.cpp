@@ -4,7 +4,7 @@
 using namespace node;
 using namespace v8;
 
-static Handle<Value> foo(const Arguments& args)
+static Handle<Value> hi(const Arguments& args)
 {
   return String::New("Hello World");
 }
@@ -12,8 +12,8 @@ static Handle<Value> foo(const Arguments& args)
 extern "C" {
   static void init(Handle<Object> target)
   {
-    NODE_SET_METHOD(target, "foo", foo);
+    NODE_SET_METHOD(target, "hi", hi);
   }
 
-  NODE_MODULE(hello, init);
+  NODE_MODULE(helloworld, init);
 }
