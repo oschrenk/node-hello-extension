@@ -12,16 +12,15 @@ public:
   static Persistent<FunctionTemplate> s_ct;
   static void Init(Handle<Object> target)
   {
-    Local<FunctionTemplate> t = FunctionTemplate::New(New);
-
-    s_ct = Persistent<FunctionTemplate>::New(t);
+    s_ct = Persistent<FunctionTemplate>::New(FunctionTemplate::New(New));
     s_ct->InstanceTemplate()->SetInternalFieldCount(1);
     s_ct->SetClassName(String::NewSymbol("HelloWorld"));
 
+	// bind Hello method to hi
     NODE_SET_PROTOTYPE_METHOD(s_ct, "hi", Hello);
 
-    target->Set(String::NewSymbol("HelloWorld"),
-                s_ct->GetFunction());
+	// expose class as HelloWorld
+    target->Set(String::NewSymbol("HelloWorld"), s_ct->GetFunction());
   }
 
   // empty constructor
@@ -34,6 +33,7 @@ public:
   {
   }
 
+  // equivalent to the constructor of java script version
   static Handle<Value> New(const Arguments& args)
   {
     HelloWorld* hw = new HelloWorld();
