@@ -16,3 +16,12 @@
 	node-waf configure build
 	node test/test.js
 	..
+	
+	cd 04-cpp-async
+	node-waf configure build
+	node test/test.js
+	..
+
+## Resources ##
+
+[Writing Node.js Native Extensions](https://www.cloudkick.com/blog/2010/aug/23/writing-nodejs-native-extensions/)
