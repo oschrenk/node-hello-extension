@@ -11,3 +11,8 @@
 	node-waf configure build
 	node test/test.js
 	..
+	
+	cd 03-cpp-object
+	node-waf configure build
+	node test/test.js
+	..
