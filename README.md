@@ -22,6 +22,11 @@
 	node test/test.js
 	..
 
+	cd 05-cpp-static
+	make
+	node test/test.js
+	..	
+
 ## Resources ##
 
 [Writing Node.js Native Extensions](https://www.cloudkick.com/blog/2010/aug/23/writing-nodejs-native-extensions/)
