@@ -1,6 +1,7 @@
 import Options
 from os import unlink, symlink, popen
 from os.path import exists
+import os
 
 srcdir = "."
 blddir = "build"
@@ -13,16 +14,17 @@ def configure(conf):
   conf.check_tool("compiler_cxx")
   conf.check_tool("node_addon")
 
+  tna_libdir=os.getcwd()
+
+  # the suffix tn is used as the lib name 
+  conf.env.append_value("LIBPATH_tn", tna_libdir)
+  conf.env.append_value("LIB_tn", "TestNode")
+
 def build(bld):
-  foo = bld.new_task_gen("cxx", "stlib");
-  foo.use = "chslib"
-  foo.source = "TestNode.cpp"
-  foo.target = "libTestNode" 
-  
   obj = bld.new_task_gen("cxx", "shlib", "node_addon")
   obj.target = "helloworld"
   obj.source = "helloworld.cpp"
-  obj.use = "TestNode"
+  obj.uselib = "tn"
   
   obj.cxxflags = ["-D_FILE_OFFSET_BITS=64", "-D_LARGEFILE_SOURCE"]
 

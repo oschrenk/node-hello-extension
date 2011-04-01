@@ -9,7 +9,7 @@ std::cout <<"Dest TestNode"<<std::endl;
 }
 
 std::string TestNode::getName(){
-return "OLLI";
+return "Acme";
 }
 
 
